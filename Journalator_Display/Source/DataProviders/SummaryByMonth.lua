@@ -20,6 +20,14 @@ local SUMMARY_DATA_PROVIDER_LAYOUT ={
     cellTemplate = "JournalatorPriceCellTemplate",
     cellParameters = { "moneyOut" },
   },
+  {
+    headerTemplate = "AuctionatorStringColumnHeaderTemplate",
+    headerText = JOURNALATOR_L_PROFIT,
+    headerParameters = { "profit" },
+    cellTemplate = "JournalatorPriceCellTemplate",
+    cellParameters = { "profit" },
+    defaultHide = true,
+  },
 }
 
 -- Move the date to the start of the month that contains this date
@@ -75,6 +83,7 @@ function JournalatorSummaryByMonthDataProviderMixin:Refresh()
         itemName = month .. " " .. d.year,
         moneyIn = incoming,
         moneyOut = -outgoing,
+        profit = incoming - outgoing,
       })
     end
 

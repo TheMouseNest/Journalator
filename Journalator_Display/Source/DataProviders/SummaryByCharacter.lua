@@ -20,6 +20,14 @@ local SUMMARY_DATA_PROVIDER_LAYOUT ={
     cellTemplate = "JournalatorPriceCellTemplate",
     cellParameters = { "moneyOut" },
   },
+  {
+    headerTemplate = "AuctionatorStringColumnHeaderTemplate",
+    headerText = JOURNALATOR_L_PROFIT,
+    headerParameters = { "profit" },
+    cellTemplate = "JournalatorPriceCellTemplate",
+    cellParameters = { "profit" },
+    defaultHide = true,
+  },
 }
 
 JournalatorSummaryByCharacterDataProviderMixin = CreateFromMixins(JournalatorDisplayDataProviderMixin)
@@ -47,7 +55,7 @@ function JournalatorSummaryByCharacterDataProviderMixin:Refresh()
 
       if incoming ~= 0 or outgoing ~= 0 then
         local sourceCharacter = Journalator.Utilities.AddRealmToPlayerName(character, {realm = realm})
-        table.insert(byCharacter, {character = sourceCharacter, moneyIn = incoming, moneyOut = -outgoing})
+        table.insert(byCharacter, {character = sourceCharacter, moneyIn = incoming, moneyOut = -outgoing, profit = incoming - outgoing})
       end
     end
   end

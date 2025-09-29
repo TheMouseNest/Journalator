@@ -20,6 +20,14 @@ local SUMMARY_DATA_PROVIDER_LAYOUT ={
     cellTemplate = "JournalatorPriceCellTemplate",
     cellParameters = { "moneyOut" },
   },
+  {
+    headerTemplate = "AuctionatorStringColumnHeaderTemplate",
+    headerText = JOURNALATOR_L_PROFIT,
+    headerParameters = { "profit" },
+    cellTemplate = "JournalatorPriceCellTemplate",
+    cellParameters = { "profit" },
+    defaultHide = true,
+  },
 }
 
 JournalatorSummaryByDayDataProviderMixin = CreateFromMixins(JournalatorDisplayDataProviderMixin)
@@ -44,6 +52,7 @@ function JournalatorSummaryByDayDataProviderMixin:Refresh()
         itemName = Auctionator.Utilities.PrettyDate(dayStart),
         moneyIn = incoming,
         moneyOut = -outgoing,
+        profit = incoming - outgoing,
       })
     end
 
