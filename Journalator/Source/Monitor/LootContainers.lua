@@ -60,7 +60,7 @@ function JournalatorLootContainersMonitorMixin:OnEvent(eventName, ...)
   -- Get the name of the object when herbing/mining
   elseif eventName == "UNIT_SPELLCAST_SENT" then
     local unit, targetName = ...
-    if unit == "player" then
+    if unit == "player" and (not issecretvalue or not issecretvalue(targetName)) then
       self.worldObjectCast = targetName
     end
   end
@@ -339,7 +339,7 @@ function JournalatorLootContainersMonitorMixin:AddToLogs()
       end)
     elseif guid:find("GameObject") ~= nil then
       result.type = "world"
-      result.name = self.worldObjectCast or ""
+      result.name = self.worldObjectCast or UNKNOWN
       result.objectID = tonumber(guid:match("^%w+%-%d+%-%d+%-%d+%-%d+%-(%d+)%-%w+$"))
       result.time = time()
       Journalator.AddToLogs({ LootContainers = { result } })
