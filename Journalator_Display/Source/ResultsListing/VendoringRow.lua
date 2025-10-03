@@ -74,7 +74,7 @@ function JournalatorLogViewVendoringRowMixin:OnLeave()
   self.UpdateTooltip = nil
   self:CancelContinuable()
 
-  if self.rowData.itemLink == nil then
+  if not self.rowData or not self.rowData.itemLink then
     return
   end
 
