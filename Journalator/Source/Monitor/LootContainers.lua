@@ -60,7 +60,7 @@ function JournalatorLootContainersMonitorMixin:OnEvent(eventName, ...)
   -- Get the name of the object when herbing/mining
   elseif eventName == "UNIT_SPELLCAST_SENT" then
     local unit, targetName = ...
-    if unit == "player" and (not issecretvalue or not issecretvalue(targetName)) then
+    if (not issecretvalue or (not issecretvalue(unit) and not issecretvalue(targetName))) and unit == "player" then
       self.worldObjectCast = targetName
     end
   end
