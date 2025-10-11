@@ -329,7 +329,12 @@ function JournalatorLootContainersMonitorMixin:AddToLogs()
     end
 
     Journalator.Debug.Message("loot guid", guid)
-    if guid:find("Creature") ~= nil or guid:find("Vehicle") ~= nil then
+    if issecretvalue(guid) then
+      result.type = "unknown"
+      result.name = UNKNOWN
+      result.time = time()
+      Journalator.AddToLogs({ LootContainers = { result } })
+    elseif not guid:find("Creature") ~= nil or guid:find("Vehicle") ~= nil then
       result.type = "npc"
       result.npcID = tonumber(guid:match("^%w+%-%d+%-%d+%-%d+%-%d+%-(%d+)%-%w+$"))
       Journalator.Utilities.GetNPCDetailsFromGUID(guid, function(details)

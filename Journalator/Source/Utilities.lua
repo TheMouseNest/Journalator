@@ -151,6 +151,9 @@ do
   local frame
   local callbacks = {}
   local function Check()
+    if InCombatLockdown() then
+      return
+    end
     for link, list in pairs(callbacks) do
       local lines = Journalator.GetTooltipLines(link)
       if lines[1] ~= nil then
