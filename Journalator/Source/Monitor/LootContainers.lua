@@ -329,7 +329,7 @@ function JournalatorLootContainersMonitorMixin:AddToLogs()
     end
 
     Journalator.Debug.Message("loot guid", guid)
-    if issecretvalue(guid) then
+    if issecretvalue and issecretvalue(guid) then
       result.type = "unknown"
       result.name = UNKNOWN
       result.time = time()
