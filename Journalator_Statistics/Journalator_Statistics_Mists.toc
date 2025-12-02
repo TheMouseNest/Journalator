@@ -1,4 +1,4 @@
-## Interface: 50500
+## Interface: 50502
 ## Title: Journalator (Statistics and Tooltips)
 ## Notes: Generates data for tooltips and shows them
 ## Version: @project-version@

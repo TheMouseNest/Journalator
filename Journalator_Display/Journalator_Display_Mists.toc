@@ -1,4 +1,4 @@
-## Interface: 50500
+## Interface: 50502
 ## Title: Journalator (Display)
 ## Notes: Main view
 ## Version: @project-version@
