@@ -1,7 +1,4 @@
-## Interface: 120000, 110207, 110200
-## Interface-Mists: 50502
-## Interface-Cata: 40402
-## Interface-Vanilla: 11508
+## Interface: 120000, 110207, 110200, 50503, 11508
 ## Title: Journalator
 ## Notes: Data storage and recording
 ## Version: @project-version@

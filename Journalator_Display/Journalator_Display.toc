@@ -1,4 +1,4 @@
-## Interface: 120000, 110207, 110205
+## Interface: 120000, 110207, 50503, 11508
 ## Title: Journalator (Display)
 ## Notes: Main view
 ## Version: @project-version@
@@ -21,4 +21,5 @@
 Libs.xml
 
 Source\Manifest.xml
-Source_Mainline\Display\TabButton.xml
+Source_Mainline\Display\TabButton.xml [AllowLoadGameType mainline]
+Source_Classic\Display\TabButton.xml [AllowLoadGameType classic]

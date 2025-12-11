@@ -1,9 +1,0 @@
-## Interface: 50502
-## Title: Journalator (Options UI)
-## Notes: UI for changing settings
-## Version: @project-version@
-## Author: plusmouse
-## RequiredDeps: Journalator, Auctionator
-## IconTexture: Interface/AddOns/Journalator/Images/icon
-
-Source\Manifest.xml

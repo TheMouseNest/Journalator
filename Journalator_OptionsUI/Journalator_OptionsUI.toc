@@ -1,10 +1,9 @@
-## Interface: 120000, 110207, 110205
-## Title: Journalator (Statistics and Tooltips)
-## Notes: Generates data for tooltips and shows them
+## Interface: 120000, 110207, 50503, 11508
+## Title: Journalator (Options UI)
+## Notes: UI for changing settings
 ## Version: @project-version@
 ## Author: plusmouse
 ## RequiredDeps: Journalator, Auctionator
-## SavedVariables: JOURNALATOR_STATISTICS
 ## IconTexture: Interface/AddOns/Journalator/Images/icon
 ## Category-enUS: Auctions
 ## Category-deDE: Auktionen
@@ -18,7 +17,4 @@
 ## Category-zhCN: 拍卖
 ## Category-zhTW: 拍賣
 
-Libs.xml
-Main.lua
-API.lua
-Tooltips\Manifest.xml
+Source\Manifest.xml
