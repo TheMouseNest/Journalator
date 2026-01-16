@@ -1,4 +1,4 @@
-## Interface: 120000, 110207, 50503, 11508
+## Interface: 120000, 110207, 50503, 38000, 20505, 11508
 ## Title: Journalator (Display)
 ## Notes: Main view
 ## Version: @project-version@
