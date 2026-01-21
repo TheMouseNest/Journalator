@@ -400,6 +400,13 @@ function JournalatorVendorItemsMonitorMixin:RegisterBuybackHandlers()
   end)
 end
 
+local GetMerchantItemInfo = GetMerchantItemInfo or function(index)
+  local info = C_MerchantFrame.GetItemInfo(index);
+  if info then
+    return info.name, info.texture, info.price, info.stackCount, info.numAvailable, info.isPurchasable, info.isUsable, info.hasExtendedCost, info.currencyID, info.spellID;
+  end
+end
+
 -- Handle normal purchase of items. This even works when the cursor is used to
 -- drag and item from the vendor into a bag.
 function JournalatorVendorItemsMonitorMixin:RegisterPurchaseHandlers()
