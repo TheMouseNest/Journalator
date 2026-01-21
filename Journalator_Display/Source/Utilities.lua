@@ -65,7 +65,7 @@ function Journalator.Utilities.AddQualityIconToItemName(itemName, itemLink)
 
   local quality = C_TradeSkillUI.GetItemReagentQualityByItemInfo(itemID)
   if quality ~= nil then
-    local icon = C_Texture.GetCraftingReagentQualityChatIcon(quality)
+    local icon = Auctionator.Utilities.GetCraftingQualityMarkup(quality)
     return AUCTION_HOUSE_CRAFTING_REAGANT_QUALITY_FORMAT:format(itemName, icon)
   else
     return itemName
