@@ -140,6 +140,14 @@ function Journalator.Archiving.MakeNewStore()
   table.insert(JOURNALATOR_ARCHIVE_TIMES, storeTime)
 end
 
+function Journalator.Archiving.CloseLastStore()
+  Journalator.State.Archive:Create("SometimesLocked", currentStore)
+  local storeTime = JOURNALATOR_ARCHIVE_TIMES[#JOURNALATOR_ARCHIVE_TIMES]
+  local currentStore = Journalator.Constants.STORE_PREFIX .. storeTime
+
+  Journalator.State.Archive:CloseStore("SometimesLocked", currentStore)
+end
+
 function Journalator.Archiving.SetState()
   local storeTime = JOURNALATOR_ARCHIVE_TIMES[#JOURNALATOR_ARCHIVE_TIMES]
   local currentStore = Journalator.Constants.STORE_PREFIX .. storeTime
@@ -158,6 +166,7 @@ function Journalator.Archiving.AutogenerateStore()
   end
   if count >= Journalator.Constants.STORE_SIZE_LIMIT then
     Journalator.Debug.Message("Generating new store", count)
+    Journalator.Archiving.CloseLastStore()
     Journalator.Archiving.MakeNewStore()
     Journalator.Archiving.SetState()
   end
