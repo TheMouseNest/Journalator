@@ -143,9 +143,11 @@ end
 function Journalator.Archiving.CloseLastStore()
   Journalator.State.Archive:Create("SometimesLocked", currentStore)
   local storeTime = JOURNALATOR_ARCHIVE_TIMES[#JOURNALATOR_ARCHIVE_TIMES]
-  local currentStore = Journalator.Constants.STORE_PREFIX .. storeTime
 
-  Journalator.State.Archive:CloseStore("SometimesLocked", currentStore)
+  if storeTime then
+    local currentStore = Journalator.Constants.STORE_PREFIX .. storeTime
+    Journalator.State.Archive:Close("SometimesLocked", currentStore)
+  end
 end
 
 function Journalator.Archiving.SetState()
