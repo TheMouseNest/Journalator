@@ -338,7 +338,7 @@ function JournalatorLootContainersMonitorMixin:AddToLogs()
       result.type = "npc"
       result.npcID = tonumber(guid:match("^%w+%-%d+%-%d+%-%d+%-%d+%-(%d+)%-%w+$"))
       Journalator.Utilities.GetNPCDetailsFromGUID(guid, function(details)
-        result.name = details.name
+        result.name = not issecretvalue or not issecretvalue(details.name) and details.name or UNKNOWN
         result.time = time()
         Journalator.AddToLogs({ LootContainers = { result } })
       end)
