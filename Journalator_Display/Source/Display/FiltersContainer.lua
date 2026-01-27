@@ -137,6 +137,9 @@ function JournalatorFiltersContainerMixin:GetSearch()
   end
 
   return function(itemName)
+    if type(itemName) ~= "string" then
+      return false
+    end
     local lower = string.lower(itemName)
     for _, term in ipairs(searchTerms) do
       if term.isExact then
