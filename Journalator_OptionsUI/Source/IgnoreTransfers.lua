@@ -19,13 +19,8 @@ function JournalatorConfigIgnoreTransfersOptionsFrameMixin:OnLoad()
   self.OnDefault = function() end
   self.OnRefresh = function() end
 
-  if Settings then
-    local category = Settings.GetCategory(self.parent)
-    local subcategory = Settings.RegisterCanvasLayoutSubcategory(category, self, self.name)
-    Settings.RegisterAddOnCategory(subcategory)
-  else
-    InterfaceOptions_AddCategory(self, "Journalator")
-  end
+  local subcategory = Settings.RegisterCanvasLayoutSubcategory(Journalator.Config.SettingsCategory, self, self.name)
+  Settings.RegisterAddOnCategory(subcategory)
 
   local view = CreateScrollBoxLinearView()
   view:SetPadding(0, 25, 10, 10, 0)

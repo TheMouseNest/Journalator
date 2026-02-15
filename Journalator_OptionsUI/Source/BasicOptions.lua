@@ -18,13 +18,9 @@ function JournalatorConfigBasicOptionsFrameMixin:OnLoad()
   self.OnDefault = function() end
   self.OnRefresh = function() end
 
-  if Settings and SettingsPanel then
-    local category = Settings.RegisterCanvasLayoutCategory(self, self.name)
-    category.ID = self.name
-    Settings.RegisterAddOnCategory(category)
-  else
-    InterfaceOptions_AddCategory(self, self.name)
-  end
+  local category = Settings.RegisterCanvasLayoutCategory(self, self.name)
+  Settings.RegisterAddOnCategory(category)
+  Journalator.Config.SettingsCategory = category
 
   self:SetupDefaultTabChooser()
 end
