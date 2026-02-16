@@ -132,6 +132,7 @@ JOURNALATOR_LOCALES.enUS = function()
   L["PUBLIC"] = "Public"
   L["GUILD"] = "Guild"
   L["PERSONAL"] = "Personal"
+  L["PATRON"] = "Patron"
   L["CUSTOMER_NOTE"] = "Customer Note"
   L["CRAFTER_NOTE"] = "Crafter Note"
   L["CRAFTER"] = "Crafter"

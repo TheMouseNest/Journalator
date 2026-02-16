@@ -61,7 +61,7 @@ local function GetCustomerReagents(reagentsData)
   local result = {}
   for _, r in ipairs(reagentsData) do
     table.insert(result, {
-      itemID = r.reagentInfo.itemID,
+      itemID = r.reagentInfo.reagent.itemID,
       quantity = r.reagentInfo.quantity,
       slotIndex = r.slotIndex, -- Used in ExcludeMatching
     })

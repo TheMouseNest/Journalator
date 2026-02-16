@@ -9,9 +9,13 @@ local function AddReagents(reagents, headerText, noEntriesText, missingText)
   if reagents and #reagents > 0 then
     GameTooltip:AddLine(lightBlue:WrapTextInColorCode(headerText))
     for _, reagent in ipairs(reagents) do
-      local _, link = C_Item.GetItemInfo(reagent.itemID)
-      if link ~= nil then
-        GameTooltip:AddLine(WHITE_FONT_COLOR:WrapTextInColorCode(Auctionator.Utilities.GetNameFromLink(link)) .. Auctionator.Utilities.CreateCountString(reagent.quantity))
+      if reagent.itemID then
+        local _, link = C_Item.GetItemInfo(reagent.itemID)
+        if link ~= nil then
+          GameTooltip:AddLine(WHITE_FONT_COLOR:WrapTextInColorCode(Auctionator.Utilities.GetNameFromLink(link)) .. Auctionator.Utilities.CreateCountString(reagent.quantity))
+        end
+      else
+        GameTooltip:AddLine(WHITE_FONT_COLOR:WrapTextInColorCode(UNKNOWN) .. Auctionator.Utilities.CreateCountString(reagent.quantity))
       end
     end
   elseif reagents then
@@ -106,7 +110,9 @@ function JournalatorLogViewCraftingOrdersRowMixin:OnEnter()
   -- Cache item data for all reagents ready for display in tooltip
   if #allReagents > 0 then
     for _, reagent in ipairs(allReagents) do
-      self.continuableContainer:AddContinuable(Item:CreateFromItemID(reagent.itemID))
+      if reagent.itemID then
+        self.continuableContainer:AddContinuable(Item:CreateFromItemID(reagent.itemID))
+      end
     end
   end
 

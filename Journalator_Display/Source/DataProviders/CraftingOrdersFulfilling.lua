@@ -104,6 +104,7 @@ function JournalatorCraftingOrdersFulfillingDataProviderMixin:Refresh()
     [Enum.CraftingOrderType.Public] = JOURNALATOR_L_PUBLIC,
     [Enum.CraftingOrderType.Guild] = JOURNALATOR_L_GUILD,
     [Enum.CraftingOrderType.Personal] = JOURNALATOR_L_PERSONAL,
+    [Enum.CraftingOrderType.Npc] = JOURNALATOR_L_PATRON,
   }
 
   local results = {}

@@ -85,7 +85,7 @@ function JournalatorCraftingOrderPlacingMonitorMixin:HookPlacing()
     end
 
     -- Save all reagents merging quality and non-quality reagents
-    local reagents = Journalator.Utilities.CleanReagents(orderInfo.reagentItems)
+    local reagents = Journalator.Utilities.CleanReagents(orderInfo.reagentInfos)
     tAppendAll(reagents, Journalator.Utilities.CleanReagents(orderInfo.craftingReagentItems))
 
     local postingFee = C_CraftingOrders.CalculateCraftingOrderPostingFee(orderInfo.skillLineAbilityID, orderInfo.orderType, orderInfo.orderDuration)
