@@ -70,6 +70,7 @@ local COMPARATORS = {
   itemName = Auctionator.Utilities.StringComparator,
   moneyIn = Auctionator.Utilities.NumberComparator,
   moneyOut = Auctionator.Utilities.NumberComparator,
+  profit = Auctionator.Utilities.NumberComparator,
 }
 
 function JournalatorSummaryByDayDataProviderMixin:Sort(fieldName, sortDirection)

@@ -71,6 +71,7 @@ local COMPARATORS = {
   character = Auctionator.Utilities.StringComparator,
   moneyIn = Auctionator.Utilities.NumberComparator,
   moneyOut = Auctionator.Utilities.NumberComparator,
+  profit = Auctionator.Utilities.NumberComparator,
 }
 
 function JournalatorSummaryByCharacterDataProviderMixin:Sort(fieldName, sortDirection)
