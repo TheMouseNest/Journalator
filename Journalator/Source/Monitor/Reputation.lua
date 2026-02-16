@@ -23,6 +23,10 @@ function JournalatorReputationMonitorMixin:OnEvent(eventName, ...)
   if eventName == "CHAT_MSG_COMBAT_FACTION_CHANGE" then
     local text = ...
 
+    if issecretvalue and issecretvalue(text) then
+      return
+    end
+
     if self.reportKey == nil then
       table.insert(self.recentNotLogged, {
         time = GetTime(),
