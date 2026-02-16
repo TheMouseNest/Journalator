@@ -99,7 +99,7 @@ function JournalatorVendorItemsDataProviderMixin:Refresh()
           itemLink = item.itemLink,
           sourceCharacter = Journalator.Utilities.AddRealmToPlayerName(item.source.character, item.source),
           index = index,
-          value = moneyIn - moneyOut,
+          value = moneyIn + moneyOut,
           selected = self:IsSelected(index),
         })
       else
