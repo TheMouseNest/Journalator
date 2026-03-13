@@ -46,7 +46,8 @@ local function GetBasicAndNotModifiedReagents(recipeSchematic)
   local result = {}
   for _, reagentSlotSchematic in ipairs(recipeSchematic.reagentSlotSchematics) do
     if reagentSlotSchematic.reagentType == Enum.CraftingReagentType.Basic and
-       reagentSlotSchematic.dataSlotType == Enum.TradeskillSlotDataType.Reagent then
+       reagentSlotSchematic.dataSlotType == Enum.TradeskillSlotDataType.Reagent and
+       reagentSlotSchematic.reagents[1].itemID then
       table.insert(result, {
         itemID = reagentSlotSchematic.reagents[1].itemID,
         quantity = reagentSlotSchematic.quantityRequired,
@@ -60,11 +61,13 @@ end
 local function GetCustomerReagents(reagentsData)
   local result = {}
   for _, r in ipairs(reagentsData) do
-    table.insert(result, {
-      itemID = r.reagentInfo.reagent.itemID,
-      quantity = r.reagentInfo.quantity,
-      slotIndex = r.slotIndex, -- Used in ExcludeMatching
-    })
+    if r.reagent.itemID then
+      table.insert(result, {
+        itemID = r.reagentInfo.reagent.itemID,
+        quantity = r.reagentInfo.quantity,
+        slotIndex = r.slotIndex, -- Used in ExcludeMatching
+      })
+    end
   end
   return result
 end
@@ -77,17 +80,21 @@ local function GetSlotsWithReagents(recipeSchematic, reagents)
   local reagentsToSlots = {}
   for _, reagentSlotSchematic in ipairs(recipeSchematic.reagentSlotSchematics) do
     for _, reagent in ipairs(reagentSlotSchematic.reagents) do
-      reagentsToSlots[reagent.itemID] = reagentSlotSchematic.slotIndex
+      if reagent.itemID then
+        reagentsToSlots[reagent.itemID] = reagentSlotSchematic.slotIndex
+      end
     end
   end
 
   local result = {}
   for _, r in ipairs(reagents) do
-    table.insert(result, {
-      itemID = r.itemID,
-      quantity = r.quantity,
-      slotIndex = reagentsToSlots[r.itemID] -- Used in ExcludeMatching
-    })
+    if r.itemID then
+      table.insert(result, {
+        itemID = r.itemID,
+        quantity = r.quantity,
+        slotIndex = reagentsToSlots[r.itemID] -- Used in ExcludeMatching
+      })
+    end
   end
 
   return result
