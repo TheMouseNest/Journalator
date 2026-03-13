@@ -48,6 +48,14 @@ function Journalator.SlashCmd.Config(optionName, value1, ...)
   Journalator.Utilities.Message("Now set " .. optionName .. ": " .. tostring(Journalator.Config.Get(optionName)))
 end
 
+function Journalator.SlashCmd.Version()
+  Journalator.Utilities.Message(
+    BLUE_FONT_COLOR:WrapTextInColorCode("Version: ") .. C_AddOns.GetAddOnMetadata("Journalator", "Version") ..
+    LIGHTGRAY_FONT_COLOR:WrapTextInColorCode(", " .. date() .. ", ") ..
+    BLUE_FONT_COLOR:WrapTextInColorCode("WoW: ") .. select(4, GetBuildInfo())
+  )
+end
+
 function Journalator.SlashCmd.Debug(...)
   Journalator.Config.Set(Journalator.Config.Options.DEBUG, not Journalator.Config.Get(Journalator.Config.Options.DEBUG))
   if Journalator.Config.Get(Journalator.Config.Options.DEBUG) then
@@ -58,6 +66,8 @@ function Journalator.SlashCmd.Debug(...)
 end
 
 local COMMANDS = {
+  ["v"] = Journalator.SlashCmd.Version,
+  ["version"] = Journalator.SlashCmd.Version,
   ["c"] = Journalator.SlashCmd.Config,
   ["config"] = Journalator.SlashCmd.Config,
   ["d"] = Journalator.SlashCmd.Debug,
