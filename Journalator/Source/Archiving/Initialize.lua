@@ -112,6 +112,7 @@ end
 
 function Journalator.Archiving.Initialize()
   JOURNALATOR_ARCHIVE = JOURNALATOR_ARCHIVE or {}
+  JOURNALATOR_ARCHIVE.internalVersion = 1
   local archive = Archivist:Initialize(JOURNALATOR_ARCHIVE)
 
   -- Upgrade from the old storage format (plain tables with lots of keys)

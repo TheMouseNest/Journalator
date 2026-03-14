@@ -1,0 +1,13 @@
+<Ui>
+	<!-- Externals -->
+	<Script file="libs\LibStub\LibStub.lua"/>
+	<Include file="libs\LibDeflate\lib.xml"/>
+	<Include file="libs\LibSerialize\lib.xml"/>
+	<!-- Main code -->
+	<Script file="Archivist.lua"/>
+	<!-- Pre-packaged store types -->
+	<Script file="stores\RawData.lua"/>
+	<Script file="stores\ReadOnly.lua"/>
+	<!-- Migrations -->
+	<Script file="migrations\add_libserialize.lua"/>
+</Ui>

@@ -1,0 +1,12 @@
+## Interface: 100005
+## Interface-Classic: 11403
+## Interface-BC: 20504
+## Interface-Wrath: 30401
+## Title: Archivist
+## Author: emptyrivers
+## Version: v2.0.2
+## Notes: Flexible data archive.
+## SavedVariables: ACHV_DB
+## X-Curse-Project-ID: 354259
+
+Archivist.xml
