@@ -61,7 +61,7 @@ end
 local function GetCustomerReagents(reagentsData)
   local result = {}
   for _, r in ipairs(reagentsData) do
-    if r.reagent.itemID then
+    if r.reagentInfo.reagent.itemID then
       table.insert(result, {
         itemID = r.reagentInfo.reagent.itemID,
         quantity = r.reagentInfo.quantity,
