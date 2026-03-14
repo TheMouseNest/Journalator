@@ -20,4 +20,3 @@ externals:
   Journalator_Display/Libs/LibUIDropDownMenu: https://repos.wowace.com/wow/libuidropdownmenu/trunk/LibUIDropDownMenu
   Journalator_Statistics/Libs/LibStub: https://repos.wowace.com/wow/libstub/trunk
   Journalator_Statistics/Libs/LibBattlePetTooltipLine: https://github.com/plusmouse/LibBattlePetTooltipLine
-  Journalator/Embeds/Archivist: https://github.com/emptyrivers/Archivist
