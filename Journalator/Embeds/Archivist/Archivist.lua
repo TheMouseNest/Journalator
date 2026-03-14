@@ -74,10 +74,6 @@ local serializeConfig = {
 local proto = {}
 Archivist.proto = proto
 
---[==[@debug@
-proto.debug = true
---@end-debug@]==]
-
 proto.Assert = Archivist.Assert
 proto.Warn = Archivist.Warn
 
