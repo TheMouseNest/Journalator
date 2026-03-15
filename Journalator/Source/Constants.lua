@@ -21,7 +21,9 @@ Journalator.Constants.TimePeriods = {
     JOURNALATOR_L_LAST_3_MONTHS,
     JOURNALATOR_L_LAST_MONTH,
     JOURNALATOR_L_LAST_WEEK,
+    JOURNALATOR_L_SERVER_WEEK,
     JOURNALATOR_L_LAST_DAY,
+    JOURNALATOR_L_SERVER_DAY,
     JOURNALATOR_L_LAST_HOUR,
   },
   Values = {
@@ -31,7 +33,9 @@ Journalator.Constants.TimePeriods = {
     SECONDS_IN_A_MONTH * 3,
     SECONDS_IN_A_MONTH,
     7 * 24 * 60 * 60,
+    "server_week",
     24 * 60 * 60,
+    "server_day",
     60 * 60,
   }
 }
