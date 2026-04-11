@@ -42,10 +42,10 @@ function JournalatorWoWTokensDataProviderMixin:Refresh()
       local processedItem = {
         itemName = item.itemName,
         itemLink = item.itemLink,
-        moneyOut = item.value,
+        moneyOut = item.value or 0,
         sourceCharacter = Journalator.Utilities.AddRealmToPlayerName(item.source.character, item.source),
         rawDay = item.time,
-        value = -item.value,
+        value = -(item.value or 0),
         selected = self:IsSelected(index),
         index = index,
       }

@@ -49,7 +49,7 @@ function Journalator.GetInOut(startTime, endTime, filter)
     for _, item in ipairs(wowTokens) do
       if item.time >= startTime and item.time <= endTime then
         if filter(item) then
-          outgoing = outgoing + item.value
+          outgoing = outgoing + (item.value or 0)
         end
       end
     end
