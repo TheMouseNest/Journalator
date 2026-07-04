@@ -28,12 +28,21 @@
         </Anchors>
       </Frame>
 
+      <Frame inherits="AuctionatorConfigurationCheckbox" parentKey="TooltipSuccesses" parentArray="Statistics">
+        <KeyValues>
+          <KeyValue key="labelText" value="JOURNALATOR_L_CONFIG_TOOLTIP_SUCCESSES" type="global" />
+        </KeyValues>
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeKey="$parent.TooltipSaleRate" relativePoint="BOTTOMLEFT" />
+        </Anchors>
+      </Frame>
+
       <Frame inherits="AuctionatorConfigurationCheckbox" parentKey="TooltipFailures" parentArray="Statistics">
         <KeyValues>
           <KeyValue key="labelText" value="JOURNALATOR_L_CONFIG_TOOLTIP_FAILURES" type="global" />
         </KeyValues>
         <Anchors>
-          <Anchor point="TOPLEFT" relativeKey="$parent.TooltipSaleRate" relativePoint="BOTTOMLEFT" />
+          <Anchor point="TOPLEFT" relativeKey="$parent.TooltipSuccesses" relativePoint="BOTTOMLEFT" />
         </Anchors>
       </Frame>
 

@@ -1,5 +1,6 @@
 Journalator.Config.Options = {
   TOOLTIP_SALE_RATE = "tooltip_sale_rate",
+  TOOLTIP_SUCCESSES = "tooltip_successes",
   TOOLTIP_FAILURES = "tooltip_failures",
   TOOLTIP_LAST_SOLD = "tooltip_last_sold",
   TOOLTIP_LAST_BOUGHT = "tooltip_last_bought",
@@ -33,6 +34,7 @@ Journalator.Config.Options = {
 Journalator.Config.Defaults = {
   [Journalator.Config.Options.TOOLTIP_SALE_RATE] = false,
   [Journalator.Config.Options.TOOLTIP_FAILURES] = false,
+  [Journalator.Config.Options.TOOLTIP_SUCCESSES] = false,
   [Journalator.Config.Options.TOOLTIP_LAST_SOLD] = true,
   [Journalator.Config.Options.TOOLTIP_LAST_BOUGHT] = true,
   [Journalator.Config.Options.TOOLTIP_BOUGHT_STATS] = false,

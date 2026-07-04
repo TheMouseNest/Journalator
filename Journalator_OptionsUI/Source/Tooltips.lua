@@ -33,6 +33,7 @@ function JournalatorConfigTooltipsFrameMixin:OnShow()
   end
 
   self.TooltipSaleRate:SetChecked(Journalator.Config.Get(Journalator.Config.Options.TOOLTIP_SALE_RATE))
+  self.TooltipSuccesses:SetChecked(Journalator.Config.Get(Journalator.Config.Options.TOOLTIP_SUCCESSES))
   self.TooltipFailures:SetChecked(Journalator.Config.Get(Journalator.Config.Options.TOOLTIP_FAILURES))
   self.TooltipLastSold:SetChecked(Journalator.Config.Get(Journalator.Config.Options.TOOLTIP_LAST_SOLD))
   self.TooltipLastBought:SetChecked(Journalator.Config.Get(Journalator.Config.Options.TOOLTIP_LAST_BOUGHT))
@@ -44,6 +45,7 @@ end
 
 function JournalatorConfigTooltipsFrameMixin:Save()
   Journalator.Config.Set(Journalator.Config.Options.TOOLTIP_SALE_RATE, self.TooltipSaleRate:GetChecked())
+  Journalator.Config.Set(Journalator.Config.Options.TOOLTIP_SUCCESSES, self.TooltipSuccesses:GetChecked())
   Journalator.Config.Set(Journalator.Config.Options.TOOLTIP_FAILURES, self.TooltipFailures:GetChecked())
   Journalator.Config.Set(Journalator.Config.Options.TOOLTIP_LAST_SOLD, self.TooltipLastSold:GetChecked())
   Journalator.Config.Set(Journalator.Config.Options.TOOLTIP_LAST_BOUGHT, self.TooltipLastBought:GetChecked())

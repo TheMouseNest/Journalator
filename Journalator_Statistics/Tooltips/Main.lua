@@ -17,6 +17,10 @@ local function GetFailureCount(itemName)
   return tostring(Journalator.API.v1.GetRealmFailureCountByItemName(JOURNALATOR_L_JOURNALATOR, itemName))
 end
 
+local function GetSuccessCount(itemName)
+  return tostring(Journalator.API.v1.GetRealmSuccessCountByItemName(JOURNALATOR_L_JOURNALATOR, itemName))
+end
+
 local function GetLastSold(itemName)
   return Journalator.API.v1.GetRealmLastSoldByItemName(JOURNALATOR_L_JOURNALATOR, itemName)
 end
@@ -73,10 +77,14 @@ function Journalator.Tooltips.AnyEnabled()
 end
 
 function Journalator.Tooltips.GetSalesInfo(itemName, itemLink)
-  local salesRate, failedString, lastSold, lastBought, boughtStats, soldStats
+  local salesRate, successString, failedString, lastSold, lastBought, boughtStats, soldStats
 
   if Journalator.Config.Get(Journalator.Config.Options.TOOLTIP_SALE_RATE) then
     salesRate = GetSaleRate(itemName)
+  end
+
+  if Journalator.Config.Get(Journalator.Config.Options.TOOLTIP_SUCCESSES) then
+    successString = GetSuccessCount(itemName)
   end
 
   if Journalator.Config.Get(Journalator.Config.Options.TOOLTIP_FAILURES) then
@@ -99,5 +107,5 @@ function Journalator.Tooltips.GetSalesInfo(itemName, itemLink)
     boughtStats = GetBoughtStats(itemName, itemLink)
   end
 
-  return salesRate, failedString, lastSold, lastBought, boughtStats, soldStats
+  return salesRate, successString, failedString, lastSold, lastBought, boughtStats, soldStats
 end

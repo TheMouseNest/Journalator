@@ -14,10 +14,13 @@ hooksecurefunc(Auctionator.Tooltip, "ShowTipWithPricingDBKey",
       return
     end
 
-    local salesRate, failedCount, lastSold, lastBought, boughtStats, soldStats = Journalator.Tooltips.GetSalesInfo(itemName, itemLink)
+    local salesRate, successCount, failedCount, lastSold, lastBought, boughtStats, soldStats = Journalator.Tooltips.GetSalesInfo(itemName, itemLink)
 
     if salesRate ~= nil then
       tooltipFrame:AddDoubleLine(JOURNALATOR_L_SALE_RATE, WHITE_FONT_COLOR:WrapTextInColorCode(salesRate))
+    end
+    if successCount ~= nil then
+      tooltipFrame:AddDoubleLine(JOURNALATOR_L_SUCCESSES, WHITE_FONT_COLOR:WrapTextInColorCode(successCount))
     end
     if failedCount ~= nil then
       tooltipFrame:AddDoubleLine(JOURNALATOR_L_FAILURES, WHITE_FONT_COLOR:WrapTextInColorCode(failedCount))
@@ -52,10 +55,13 @@ hooksecurefunc(Auctionator.Tooltip, "AddPetTip",
       return
     end
 
-    local salesRate, failedCount, lastSold, lastBought, boughtStats, soldStats = Journalator.Tooltips.GetSalesInfo(itemName)
+    local salesRate, successCount, failedCount, lastSold, lastBought, boughtStats, soldStats = Journalator.Tooltips.GetSalesInfo(itemName)
 
     if salesRate ~= nil then
       LibBattlePetTooltipLine:AddDoubleLine(BattlePetTooltip, JOURNALATOR_L_SALE_RATE, WHITE_FONT_COLOR:WrapTextInColorCode(salesRate))
+    end
+    if successCount ~= nil then
+      LibBattlePetTooltipLine:AddDoubleLine(BattlePetTooltip, JOURNALATOR_L_SUCCESSES, WHITE_FONT_COLOR:WrapTextInColorCode(successCount))
     end
     if failedCount ~= nil then
       LibBattlePetTooltipLine:AddDoubleLine(BattlePetTooltip, JOURNALATOR_L_FAILURES, WHITE_FONT_COLOR:WrapTextInColorCode(failedCount))
