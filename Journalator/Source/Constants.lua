@@ -1,3 +1,5 @@
+local build = select(4, GetBuildInfo())
+
 Journalator.Constants = {
   LINK_INTERVAL = 7 * 24 * 60 * 60,
 
@@ -8,8 +10,11 @@ Journalator.Constants = {
   EARLY_REPUTATION_DELAY = 2,
 
   PET_CAGE_ID = 82800,
-  IsClassic = WOW_PROJECT_ID ~= WOW_PROJECT_MAINLINE,
+  IsRetail = WOW_PROJECT_ID == WOW_PROJECT_MAINLINE,
+  IsForever = build >= 16000 and build < 20000,
 }
+
+Journalator.Constants.IsClassic = not Journalator.Constants.IsRetail and not Journalator.Constants.IsForever
 
 local SECONDS_IN_A_MONTH = 30 * 24 * 60 * 60
 Journalator.Constants.TimePeriods = {
