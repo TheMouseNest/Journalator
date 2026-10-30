@@ -1,9 +1,13 @@
 JournalatorFiltersContainerMixin = {}
 
 function JournalatorFiltersContainerMixin:OnLoad()
+  local now = time()
   -- Used to only scan segments already open for realms and characters
-  self.earliestRangeTime = time()
+  self.earliestRangeTime = now
 
+  self.lastDailyResetTime = now - 86400 + C_DateAndTime.GetSecondsUntilDailyReset()
+  self.lastWeeklyResetTime = now - 7 * 86400 + C_DateAndTime.GetSecondsUntilWeeklyReset()
+  
   Auctionator.EventBus:Register(self, {
     Journalator.Events.RowClicked
   })
@@ -79,7 +83,11 @@ end
 
 function JournalatorFiltersContainerMixin:GetTimeForRange()
   local secondsToInclude = self.TimePeriodDropDown:GetValue()
-  if secondsToInclude == 0 then
+  if secondsToInclude == "server_day" then
+    return self.lastDailyResetTime
+  elseif secondsToInclude == "server_week" then
+    return self.lastWeeklyResetTime
+  elseif secondsToInclude == 0 then
     return 0
   else
     return time() - secondsToInclude
@@ -90,7 +98,15 @@ function JournalatorFiltersContainerMixin:Filter(item)
   local check = true
 
   if self.filters.secondsToInclude ~= 0 then
-    check = check and (time() - item.time) <= self.filters.secondsToInclude
+    local now = time()
+    local itemAge = now - item.time
+    if self.filters.secondsToInclude == "server_day" then
+      check = check and itemAge <= now - self.lastDailyResetTime
+    elseif self.filters.secondsToInclude == "server_week" then
+      check = check and itemAge <= now - self.lastWeeklyResetTime
+    else
+      check = check and itemAge <= self.filters.secondsToInclude
+    end
   end
 
   -- Work around one-time error when source data wasn't saved
