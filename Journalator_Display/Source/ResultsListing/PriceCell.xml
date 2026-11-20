@@ -10,6 +10,11 @@
         <Anchors>
           <Anchor point="RIGHT" x="-20" />
         </Anchors>
+        <Scripts>
+          <OnLoad inherit="append">
+            self.hideCopper = not Journalator.Constants.IsForever
+          </OnLoad>
+        </Scripts>
 
         <KeyValues>
           <KeyValue key="hideCopper" value="true" type="boolean"/>
