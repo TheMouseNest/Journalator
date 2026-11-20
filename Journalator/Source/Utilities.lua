@@ -213,6 +213,30 @@ function Journalator.Utilities.GetItemLocationFromGUID(wantedItemGUID)
   return nil
 end
 
-function Journalator.Utilities.NormalizeRealmName(realmName)
-  return realmName:gsub("[ -]", "")
+if RegionalUniqueNamesEnabled and RegionalUniqueNamesEnabled() then
+  function Journalator.Utilities.NormalizeRealmName(realmName)
+    if strlen(realmName) <= 7 then
+      return realmName
+    else
+      return realmName:match("PvP") or realmName:match("PvE") or realmName:match("RPPvP") or realmName:match("RP")
+    end
+  end
+else
+  function Journalator.Utilities.NormalizeRealmName(realmName)
+    return realmName:gsub("[ -]", "")
+  end
+end
+
+function Journalator.Utilities.GetRegionalRulesetName()
+  if C_GameRules.IsGameRuleActive(Enum.GameRule.PvPRuleset) and C_GameRules.IsGameRuleActive(Enum.GameRule.RPRuleset) then
+    return "RPPvP"
+  elseif C_GameRules.IsGameRuleActive(Enum.GameRule.PvPRuleset) then
+    return "PvP"
+  elseif C_GameRules.IsGameRuleActive(Enum.GameRule.RPRuleset) then
+    return "RP"
+  elseif C_GameRules.IsGameRuleActive(Enum.GameRule.HardcoreRuleset) then
+    return "HC"
+  else
+    return "PvE"
+  end
 end

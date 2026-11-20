@@ -161,9 +161,9 @@ function JournalatorFiltersContainerMixin:GetFilters()
     search = self:GetSearch(),
     searchText = self.SearchFilter:GetText(), -- Used to check if filter changes
     secondsToInclude = self.TimePeriodDropDown:GetValue(),
-    realm = function(realmName) return self.RealmDropDown:GetValue(realmName) end,
+    realm = function(realmName) return self.RealmDropDown:GetValue(Journalator.Utilities.NormalizeRealmName(realmName)) end,
     faction = self.FactionDropDown:GetValue(),
-    character = function(character, realm) return self.CharacterDropDown:GetValue(character, realm) end,
+    character = function(character, realm) return self.CharacterDropDown:GetValue(character, Journalator.Utilities.NormalizeRealmName(realm)) end,
   }
 end
 

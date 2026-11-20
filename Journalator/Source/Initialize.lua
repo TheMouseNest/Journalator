@@ -97,8 +97,9 @@ end
 
 local function InitializeMonitoring()
   local faction = UnitFactionGroup("player")
+  local realm = RegionalUniqueNamesEnabled and RegionalUniqueNamesEnabled() and Journalator.Utilities.GetRegionalRulesetName() or GetRealmName()
   Journalator.State.Source = {
-    realm = GetRealmName(),
+    realm = realm,
     character = GetUnitName("player"),
     faction = faction,
   }

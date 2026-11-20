@@ -1,10 +1,11 @@
 local function SearchLog(log, cache, fromTime)
   for _, item in ipairs(log) do
     if item.source ~= nil and item.time >= fromTime then
-      if not cache[item.source.realm] then
-        cache[item.source.realm] = {}
+      local realm = Journalator.Utilities.NormalizeRealmName(item.source.realm)
+      if not cache[realm] then
+        cache[realm] = {}
       end
-      cache[item.source.realm][item.source.character] = true
+      cache[realm][item.source.character] = true
     end
   end
 end

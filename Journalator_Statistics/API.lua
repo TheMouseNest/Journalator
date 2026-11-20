@@ -1,9 +1,13 @@
 local function GetRealmNames()
-  local connected = GetAutoCompleteRealms()
-  if #connected > 0 then
-    return connected
+  if RegionalUniqueNamesEnabled and RegionalUniqueNamesEnabled() then
+    return {Journalator.Utilities.GetRegionalRulesetName() or GetRealmName()}
   else
-    return { GetNormalizedRealmName() }
+    local connected = GetAutoCompleteRealms()
+    if #connected > 0 then
+      return connected
+    else
+      return { GetNormalizedRealmName() }
+    end
   end
 end
 

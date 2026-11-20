@@ -1,4 +1,4 @@
-## Interface: 120007, 16001, 50504, 38001, 20505, 11509
+## Interface: 120105, 16001, 50504, 38001, 20505, 11509
 ## Title: Journalator (Options UI)
 ## Notes: UI for changing settings
 ## Version: @project-version@

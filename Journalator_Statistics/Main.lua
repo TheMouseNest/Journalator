@@ -19,6 +19,33 @@ local function InitializeCache()
   }, {
     Journalator.Events.LogsUpdated,
   })
+
+  if not JOURNALATOR_STATISTICS.ForeverFix then
+    for realm, target in pairs(JOURNALATOR_STATISTICS.RealmConversion) do
+      local converted = Journalator.Utilities.NormalizeRealmName(target)
+      if converted ~= target then
+        JOURNALATOR_STATISTICS.RealmConversion[realm] = converted
+        JOURNALATOR_STATISTICS.RealmConversion[target] = converted
+      end
+    end
+
+    local new = {
+      Version = STATISTICS_VERSION,
+      Items = {},
+      RealmConversion = {},
+      ForeverFix = true,
+    }
+    for itemName, realmsDetails in pairs(JOURNALATOR_STATISTICS.Items) do
+      local itemNew = {}
+      for realm, itemDetails in pairs(realmsDetails) do
+        local converted = Journalator.Utilities.NormalizeRealmName(realm)
+        itemNew[converted] = itemDetails
+        new.RealmConversion[converted ] = converted
+      end
+      new.Items[itemName] = itemNew
+    end
+    JOURNALATOR_STATISTICS = new
+  end
 end
 
 local function AutoCreateCacheEntry(itemName, realm)
@@ -133,7 +160,8 @@ function Journalator.Statistics.ComputeFullCache()
   JOURNALATOR_STATISTICS = {
     Version = STATISTICS_VERSION,
     Items = {},
-    RealmConversion = {}
+    RealmConversion = {},
+    ForeverFix = true,
   }
 
   Journalator.Statistics.UpdateCache({
