@@ -8,19 +8,7 @@ local function InitializeCache()
       Journalator.Statistics.ComputeFullCache()
       Journalator.Utilities.Message(JOURNALATOR_L_FINISHED_COMPUTING_STATISTICS)
     end)
-  end
-
-  Auctionator.EventBus:Register({
-    ReceiveEvent = function(_, _, newEntries)
-      if JOURNALATOR_STATISTICS ~= nil then
-        Journalator.Statistics.UpdateCache(newEntries)
-      end
-    end
-  }, {
-    Journalator.Events.LogsUpdated,
-  })
-
-  if not JOURNALATOR_STATISTICS.ForeverFix then
+  elseif not JOURNALATOR_STATISTICS.ForeverFix then
     for realm, target in pairs(JOURNALATOR_STATISTICS.RealmConversion) do
       local converted = Journalator.Utilities.NormalizeRealmName(target)
       if converted ~= target then
@@ -46,6 +34,16 @@ local function InitializeCache()
     end
     JOURNALATOR_STATISTICS = new
   end
+
+  Auctionator.EventBus:Register({
+    ReceiveEvent = function(_, _, newEntries)
+      if JOURNALATOR_STATISTICS ~= nil then
+        Journalator.Statistics.UpdateCache(newEntries)
+      end
+    end
+  }, {
+    Journalator.Events.LogsUpdated,
+  })
 end
 
 local function AutoCreateCacheEntry(itemName, realm)
